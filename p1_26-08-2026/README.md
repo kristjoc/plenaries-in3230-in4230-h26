@@ -22,7 +22,7 @@ will cover the necessary concepts required to complete the assignments.
 We then proceeded with an interactive question-and-answer session to enable
 students to effectively self-assess the skills needed for the assignments. You
 can review the Mentimeter results
-[here](https://github.com/kristjoc/plenaries-in3230-in4230-h26/blob/main/p1_26-08-2025/MentiResults_in3230-in4230-h25.pdf).
+[here](https://github.com/kristjoc/plenaries-in3230-in4230-h26/blob/main/p1_26-08-2026/MentiResults_in3230-in4230-h26.pdf).
 
 ## NREC Cloud ##
 
