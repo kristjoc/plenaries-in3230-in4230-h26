@@ -26,5 +26,5 @@ may contain hardcoded elements. For your assignments, make sure to write clean C
 code with proper functions and clear comments.
 
 Thank you all for today! I look forward to seeing you in the next session on
-Wednesday, 09.09.2026, at 12:15 in OJD Seminarrom Caml (3438).
+Friday, 11.09.2026, at 12:15 in OJD Seminarrom Prolog (2465).
 
