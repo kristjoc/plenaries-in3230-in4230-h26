@@ -11,10 +11,11 @@ summaries of each session and code examples that were live-coded and discussed.
 
 ## Sessions ##
 
-  1. Plenary Session 1: [p1_26-08-2026](p1_26-08-2026/)
+  1. Plenary Session 1: [p1_26-08-2026](p1_26-08-2026)
   2. Plenary Session 2: [p2_02-09-2026](p2_02-09-2026)
   3. Plenary Session 3: [p3_11-09-2026](p3_11-09-2026)
-  4. Plenary Session 4: 
+  4. Plenary Session 4: [p4_30-09-2026](p4_30-09-2026)
+  5. 
 
 ## Info ##
 
