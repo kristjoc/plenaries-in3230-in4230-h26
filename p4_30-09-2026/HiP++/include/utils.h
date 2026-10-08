@@ -8,7 +8,7 @@
 #include "queue.h"
 
 #define MAX_EVENTS 10
-#define MAX_IF     3
+#define MAX_IF     5    /* MUST be bigger than 3 for our topology */
 
 struct ifs_data {
 	struct sockaddr_ll addr[MAX_IF];
