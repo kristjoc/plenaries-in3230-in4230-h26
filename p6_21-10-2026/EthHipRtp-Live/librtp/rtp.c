@@ -62,7 +62,7 @@ int rtp_parse_hdr(const uint8_t *buf, size_t remaining, struct rtp_hdr *out)
 }
 
 /* --------------------------------------------------------------------------
- * TODO 1: Encapsulation (send_frame)
+ * TODO 1 => DONE: Encapsulation (send_frame)
  *
  * Assemble full frame: [Ethernet (14B)] [HiP (4B)] [RTP (6B)] [Payload]
  *
@@ -75,16 +75,45 @@ int rtp_parse_hdr(const uint8_t *buf, size_t remaining, struct rtp_hdr *out)
  * 6. Pad with 0s to:  ETH_HDR_LEN + HIP_HDR_LEN + hip_pad(sdu_len);
  * 7. Send:            eth_send(eth, buf, off);
  * ------------------------------------------------------------------------*/
+/* --------------------------------------------------------------------------
+ * Internal: build and send one full frame (ETH + HIP + RTP + payload)
+ * ------------------------------------------------------------------------*/
 static int send_frame(struct eth_node *eth,
                       uint8_t src_hip, uint8_t dst_hip,
                       const uint8_t *dst_mac,
                       uint8_t rtp_type, uint32_t seq,
                       const uint8_t *payload, uint16_t payload_len)
 {
-	/* TODO 1: Implement top-down encapsulation here */
-	(void)eth; (void)src_hip; (void)dst_hip; (void)dst_mac;
-	(void)rtp_type; (void)seq; (void)payload; (void)payload_len;
-	return 0;
+	/* Total SDU seen by HIP = RTP header + payload */
+	size_t sdu_len = RTP_HDR_LEN + payload_len;
+
+	/* Full frame buffer */
+	uint8_t buf[ETH_HDR_LEN + HIP_HDR_LEN + hip_pad(sdu_len)];
+	size_t  off = 0;
+
+	/* --- Ethernet header --- */
+	off += eth_build_hdr(buf + off, eth->addr[0].sll_addr, dst_mac);
+
+	/* --- HIP header --- */
+	uint8_t hip_type = (rtp_type == RTP_TYPE_ACK) ? HIP_TYPE_ACK : HIP_TYPE_DATA;
+	off += hip_build_hdr(buf + off, src_hip, dst_hip,
+	                     hip_type, sdu_len);
+
+	/* --- RTP header --- */
+	off += rtp_build_hdr(buf + off, rtp_type, seq, payload_len);
+
+	/* --- payload --- */
+	if (payload_len > 0 && payload) {
+		memcpy(buf + off, payload, payload_len);
+		off += payload_len;
+	}
+
+	/* --- zero-pad to HIP alignment --- */
+	size_t expected = ETH_HDR_LEN + HIP_HDR_LEN + hip_pad(sdu_len);
+	while (off < expected)
+		buf[off++] = 0;
+
+	return eth_send(eth, buf, off);
 }
 
 /* --------------------------------------------------------------------------
