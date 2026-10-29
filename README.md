@@ -17,7 +17,8 @@ summaries of each session and code examples that were live-coded and discussed.
   4. Plenary Session 4: [p4_30-09-2026](p4_30-09-2026)
   5. Plenary Session 5: [p5_14-10-2026](p5_14-10-2026)
   6. Plenary Session 6: [p6_21-10-2026](p6_21-10-2026)
-  7. 
+  7. Plenary Session 7: [p7_28-10-2026](p7_28-10-2026)
+  8. 
 
 ## Info ##
 
