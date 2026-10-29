@@ -1,4 +1,4 @@
-# RTP-over-HiP-over-Ethernet (Live-Coding Edition)
+# RTP-over-HiP-over-Ethernet (Live-Coding)
 
 Minimalistic, layered implementation of RTP (Reliable Transfer Protocol) running
 over HiP (Hi Protocol) over raw Ethernet frames (`AF_PACKET`).
