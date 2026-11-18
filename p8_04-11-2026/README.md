@@ -4,9 +4,9 @@ Minimalistic, layered implementation of RTP (Reliable Transfer Protocol) running
 over HiP (Hi Protocol) over raw Ethernet frames (`AF_PACKET`).
 
 Structured for clear and simple live coding in three dedicated libraries:
-- [`libeth/`](https://github.com/kristjoc/plenaries-in3230-in4230-h26/tree/main/p7_28-10-2026/EthHipRtp-Live/libeth): Ethernet header building/parsing, raw socket creation, interface enumeration.
-- [`libhip/`](https://github.com/kristjoc/plenaries-in3230-in4230-h26/tree/main/p7_28-10-2026/EthHipRtp-Live/libhip): HiP 4-byte header formatting, SDU padding to 4-byte boundaries, header validation.
-- [`librtp/`](https://github.com/kristjoc/plenaries-in3230-in4230-h26/tree/main/p7_28-10-2026/EthHipRtp-Live/libeth): Go-Back-N sliding window, ACK handling, out-of-order detection, file chunking.
+- [`libeth/`](https://github.com/kristjoc/plenaries-in3230-in4230-h26/tree/main/p8_04-11-2026/EthHipRtp-Live/libeth): Ethernet header building/parsing, raw socket creation, interface enumeration.
+- [`libhip/`](https://github.com/kristjoc/plenaries-in3230-in4230-h26/tree/main/p8_04-11-2026/EthHipRtp-Live/libhip): HiP 4-byte header formatting, SDU padding to 4-byte boundaries, header validation.
+- [`librtp/`](https://github.com/kristjoc/plenaries-in3230-in4230-h26/tree/main/p8_04-11-2026/EthHipRtp-Live/libeth): Go-Back-N sliding window, ACK handling, out-of-order detection, file chunking.
 
 ---
 
@@ -70,6 +70,6 @@ make all
 
 4. **Send a file from Node A:**
    ```bash
-   dd if=/dev/random of=<filename> count=1 bs=1M
+   dd if=/dev/random of=<filename> count=1 bs=256K
    sudo ./rtp -c <filename>
    ```
